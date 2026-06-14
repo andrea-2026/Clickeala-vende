@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vendé con Nosotros – Sumate a Clickeala</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --azul:    #1A4FD8;
+    --azul-oscuro: #0D2FA0;
+    --amarillo: #FFD600;
+    --blanco:  #FFFFFF;
+    --gris-claro: #F4F6FB;
+    --gris-texto: #4A5568;
+    --negro:   #111827;
+    --verde:   #16A34A;
+    --naranja: #EA580C;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--negro);
+    background: var(--blanco);
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--azul);
+    color: var(--blanco);
+    padding: 72px 24px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.03) 40px,
+      rgba(255,255,255,0.03) 80px
+    );
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--amarillo);
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--amarillo); }
+  .hero p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    max-width: 580px;
+    margin: 0 auto 36px;
+    opacity: 0.9;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--amarillo);
+    color: var(--azul-oscuro);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.25); }
+
+  /* ── SECCIONES GENERALES ── */
+  section { padding: 72px 24px; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--azul);
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+  .lead { font-size: 1.05rem; color: var(--gris-texto); max-width: 640px; margin-bottom: 48px; }
+
+  /* ── POR QUÉ CLICKEALA ── */
+  .why { background: var(--gris-claro); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .why-card {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 28px 24px;
+    border-left: 4px solid var(--azul);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .why-icon { font-size: 2rem; margin-bottom: 12px; }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .why-card p { font-size: 0.9rem; color: var(--gris-texto); }
+
+  /* ── FÓRMULA SUSTENTABLE ── */
+  .formula {
+    background: var(--azul);
+    color: var(--blanco);
+    text-align: center;
+  }
+  .formula h2 { color: var(--amarillo); margin-bottom: 12px; }
+  .formula .lead { color: rgba(255,255,255,0.85); margin: 0 auto 48px; }
+  .formula-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+  .formula-box {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 20px 24px;
+    min-width: 160px;
+    text-align: center;
+  }
+  .formula-box .num { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--amarillo); }
+  .formula-box .lbl { font-size: 0.8rem; opacity: 0.85; }
+  .formula-op {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.4);
+    padding: 0 12px;
+  }
+  .formula-example {
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px 32px;
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .formula-example h4 { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-bottom: 12px; }
+  .formula-example .row { display: flex; justify-content: space-between; font-size: 0.95rem; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .formula-example .row:last-child { border-bottom: none; font-weight: 700; color: var(--amarillo); font-size: 1.05rem; }
+
+  /* ── PLAN ── */
+  .plan-card {
+    border: 2px solid var(--azul);
+    border-radius: 14px;
+    padding: 40px;
+    max-width: 580px;
+    margin: 0 auto;
+    box-shadow: 0 6px 32px rgba(26,79,216,0.15);
+  }
+  .plan-badge {
+    display: inline-block;
+    background: var(--amarillo);
+    color: var(--azul-oscuro);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  .plan-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--azul);
+    margin-bottom: 4px;
+  }
+  .plan-commission {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--negro);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .plan-commission span { font-size: 1rem; font-weight: 500; color: var(--gris-texto); }
+  .plan-desc { font-size: 0.88rem; color: var(--gris-texto); margin-bottom: 24px; }
+  .plan-features { list-style: none; border-top: 1px solid #E2E8F0; padding-top: 20px; }
+  .plan-features li {
+    font-size: 0.9rem;
+    padding: 8px 0;
+    border-bottom: 1px solid #F0F4F8;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .plan-features li:last-child { border-bottom: none; }
+  .check { color: var(--verde); font-weight: 700; flex-shrink: 0; }
+  .plan-cta {
+    display: block;
+    margin-top: 24px;
+    background: var(--azul);
+    color: var(--blanco);
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .plan-cta:hover { background: var(--azul-oscuro); transform: translateY(-1px); }
+
+  /* ── ENVÍOS ── */
+  .shipping { background: var(--gris-claro); }
+  .shipping-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 620px) { .shipping-grid { grid-template-columns: 1fr; } }
+  .ship-card {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .ship-card.recomendado { border: 2px solid var(--verde); }
+  .ship-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .ship-tag.green { background: #DCFCE7; color: var(--verde); }
+  .ship-tag.orange { background: #FFEDD5; color: var(--naranja); }
+  .ship-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .ship-card p { font-size: 0.9rem; color: var(--gris-texto); margin-bottom: 12px; }
+  .ship-card ul { list-style: none; }
+  .ship-card ul li { font-size: 0.88rem; color: var(--gris-texto); padding: 4px 0; padding-left: 16px; position: relative; }
+  .ship-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--azul); }
+
+  /* ── PASOS ── */
+  .steps-list { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+  .step { display: flex; gap: 20px; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    background: var(--azul);
+    color: var(--blanco);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .step-body p { font-size: 0.9rem; color: var(--gris-texto); }
+
+  /* ── FORMULARIO ── */
+  .form-section { background: var(--gris-claro); }
+  .form-aviso {
+    background: var(--azul-suave, #EEF2FF);
+    border-left: 4px solid var(--azul);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 32px;
+    font-size: 0.92rem;
+    color: var(--azul-oscuro);
+    line-height: 1.6;
+  }
+  .form-aviso strong { display: block; margin-bottom: 4px; font-size: 0.95rem; }
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 580px) { .form-grid { grid-template-columns: 1fr; } }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--negro);
+    letter-spacing: 0.02em;
+  }
+  .form-group label span { color: #E53E3E; margin-left: 2px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 11px 14px;
+    border: 1.5px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--negro);
+    background: var(--blanco);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    width: 100%;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(26,79,216,0.1);
+  }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit {
+    margin-top: 8px;
+    width: 100%;
+    background: var(--azul);
+    color: var(--blanco);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .form-submit:hover { background: var(--azul-oscuro); transform: translateY(-1px); }
+  .form-success {
+    display: none;
+    background: #F0FDF4;
+    border: 2px solid var(--verde);
+    border-radius: 12px;
+    padding: 36px 28px;
+    text-align: center;
+  }
+  .form-success .ok-icon { font-size: 3rem; margin-bottom: 12px; }
+  .form-success h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--verde); margin-bottom: 8px; }
+  .form-success p { font-size: 0.92rem; color: var(--gris-texto); max-width: 420px; margin: 0 auto; }
+
+  /* ── CTA FINAL ── */
+  .cta-final {
+    background: var(--amarillo);
+    text-align: center;
+    padding: 72px 24px;
+  }
+  .cta-final h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 6vw, 4rem); color: var(--azul-oscuro); margin-bottom: 12px; }
+  .cta-final p { font-size: 1.05rem; color: var(--azul-oscuro); max-width: 520px; margin: 0 auto 36px; opacity: 0.85; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--azul);
+    color: var(--blanco);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 16px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cta-btn:hover { background: var(--azul-oscuro); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--negro);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 0.82rem;
+  }
+  footer a { color: var(--amarillo); text-decoration: none; }
+
+  @media (max-width: 480px) {
+    .formula-boxes { flex-direction: column; }
+    .formula-op { transform: rotate(90deg); padding: 4px 0; }
+    .step { flex-direction: column; gap: 10px; }
+    .plan-card { padding: 28px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-badge">🚀 Sumate a Clickeala</div>
+    <h1>Vendé con<br><span>Nosotros</span></h1>
+    <p>Tu producto, nuestra vidriera. Llegá a más clientes en Google sin tener que crear tu propia tienda.</p>
+    <a href="#formulario" class="hero-cta">Quiero vender en Clickeala ↓</a>
+  </div>
+</header>
+
+<!-- POR QUÉ CLICKEALA -->
+<section class="why">
+  <div class="container">
+    <div class="section-label">Por qué elegirnos</div>
+    <h2>Todo listo para que empieces a vender</h2>
+    <p class="lead">No necesitás experiencia previa ni tener tu propia tienda. Nosotros ponemos la plataforma, la visibilidad y la logística. Vos ponés el producto.</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">🔍</div><h3>Visibilidad en Google</h3><p>Clickeala está indexada en Google. Tus productos aparecen en búsquedas reales de compradores.</p></div>
+      <div class="why-card"><div class="why-icon">🛒</div><h3>Tienda lista para vender</h3><p>Sin diseño, sin hosting, sin configuraciones. Tu producto está publicado y disponible desde el día uno.</p></div>
+      <div class="why-card"><div class="why-icon">💳</div><h3>Pagos integrados</h3><p>Mercado Pago, MODO, GOcuotas, Payway. El cliente elige cómo pagar, vos solo cobrás.</p></div>
+      <div class="why-card"><div class="why-icon">📦</div><h3>Logística flexible</h3><p>Correo Argentino y Andreani integrados. O bien trabajamos juntos en la opción que más te convenga.</p></div>
+      <div class="why-card"><div class="why-icon">📊</div><h3>Sin inversión inicial</h3><p>Solo pagás comisión cuando vendés. Sin mensualidad, sin suscripción obligatoria.</p></div>
+      <div class="why-card"><div class="why-icon">🤝</div><h3>Soporte personalizado</h3><p>Te acompañamos en la publicación de tus productos y en cada venta que se genere.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FÓRMULA SUSTENTABLE -->
+<section class="formula">
+  <div class="container">
+    <div class="section-label" style="color:var(--amarillo)">La clave del éxito</div>
+    <h2>La Fórmula Sustentable</h2>
+    <p class="lead">Para que tu emprendimiento sea rentable, el precio de tu producto tiene que cubrir tres costos clave. Te mostramos cómo calcularlo.</p>
+    <div class="formula-boxes">
+      <div class="formula-box"><div class="num">COSTO</div><div class="lbl">del producto</div></div>
+      <div class="formula-op">+</div>
+      <div class="formula-box"><div class="num">ENVÍO</div><div class="lbl">gratis al cliente</div></div>
+      <div class="formula-op">+</div>
+      <div class="formula-box"><div class="num">10%</div><div class="lbl">comisión Clickeala</div></div>
+      <div class="formula-op">=</div>
+      <div class="formula-box" style="border-color:var(--amarillo);background:rgba(255,214,0,0.1)">
+        <div class="num" style="color:#fff">PRECIO</div><div class="lbl">de venta final</div>
+      </div>
+    </div>
+    <div class="formula-example">
+      <h4>📦 Ejemplo real</h4>
+      <div class="row"><span>Costo del producto</span><span>$ 3.000</span></div>
+      <div class="row"><span>Costo de envío (Correo / Andreani)</span><span>$ 2.500</span></div>
+      <div class="row"><span>Comisión Clickeala (10%)</span><span>$ 555</span></div>
+      <div class="row"><span>✅ Precio mínimo recomendado</span><span>$ 6.100</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN EMPRENDEDOR -->
+<section>
+  <div class="container">
+    <div class="section-label">Lo que ofrecemos</div>
+    <h2>Plan Emprendedor</h2>
+    <p class="lead">Un único plan, claro y accesible, con todo lo que necesitás para empezar a vender desde el primer día. Solo pagás cuando vendés.</p>
+    <div class="plan-card">
+      <div class="plan-badge">🚀 Plan único para todos</div>
+      <div class="plan-name">Plan Emprendedor</div>
+      <div class="plan-commission">10% <span>de comisión por venta</span></div>
+      <div class="plan-desc">Sin mensualidad. Sin letra chica. Solo pagás cuando tu producto se vende.</div>
+      <ul class="plan-features">
+        <li><span class="check">✔</span> Publicación de tus productos en Clickeala</li>
+        <li><span class="check">✔</span> Visibilidad en Google para todos tus productos</li>
+        <li><span class="check">✔</span> Envío gratis al comprador (costo incluido en el precio)</li>
+        <li><span class="check">✔</span> Coordinación de envío por Clickeala (Correo / Andreani)</li>
+        <li><span class="check">✔</span> Todos los medios de pago habilitados</li>
+        <li><span class="check">✔</span> Publicaciones destacadas en la tienda</li>
+        <li><span class="check">✔</span> Soporte personalizado en cada venta</li>
+        <li><span class="check">✔</span> Opción de envío a cargo del comprador para productos especiales</li>
+      </ul>
+      <a href="#formulario" class="plan-cta">Sumarme al Plan Emprendedor</a>
+    </div>
+  </div>
+</section>
+
+<!-- ENVÍOS -->
+<section class="shipping">
+  <div class="container">
+    <div class="section-label">Opciones de envío</div>
+    <h2>Flexibilidad para tu negocio</h2>
+    <p class="lead">Sabemos que no todos los productos tienen el mismo costo de logística. Por eso tenemos dos modalidades claras.</p>
+    <div class="shipping-grid">
+      <div class="ship-card recomendado">
+        <span class="ship-tag green">✅ Recomendado</span>
+        <h3>Envío gratis al comprador</h3>
+        <p>El costo del envío ya está incluido en el precio del producto. El cliente compra sin sorpresas y vos tenés más chances de cerrar la venta.</p>
+        <ul>
+          <li>Mayor conversión (menos abandono de carrito)</li>
+          <li>Mejor posicionamiento dentro de la tienda</li>
+          <li>Experiencia de compra más atractiva</li>
+          <li>Disponible para todos los productos</li>
+        </ul>
+      </div>
+      <div class="ship-card">
+        <span class="ship-tag orange">Opción alternativa</span>
+        <h3>Envío a cargo del comprador</h3>
+        <p>Ideal para productos voluminosos, pesados o de alto valor donde absorber el costo de envío no es rentable.</p>
+        <ul>
+          <li>El sistema calcula el envío automáticamente</li>
+          <li>Correo Argentino y Andreani integrados</li>
+          <li>El cliente ve el costo antes de confirmar</li>
+          <li>Disponible dentro del Plan Emprendedor</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section>
+  <div class="container">
+    <div class="section-label">El proceso</div>
+    <h2>Cómo empezar a vender</h2>
+    <p class="lead">En menos de 48 horas tu producto puede estar publicado y disponible para compradores en toda Argentina.</p>
+    <ul class="steps-list">
+      <li class="step"><div class="step-num">1</div><div class="step-body"><h3>Contactanos por WhatsApp o e-mail</h3><p>Contanos qué querés vender, cuántos productos tenés y cuál es tu zona. Te respondemos a la brevedad.</p></div></li>
+      <li class="step"><div class="step-num">2</div><div class="step-body"><h3>Acordamos los detalles y calculamos el precio</h3><p>Te ayudamos a calcular el precio ideal de cada producto para que sea rentable para vos y atractivo para el comprador. La comisión es siempre el 10% por venta.</p></div></li>
+      <li class="step"><div class="step-num">3</div><div class="step-body"><h3>Mandás fotos y descripción de tus productos</h3><p>Te orientamos sobre cómo sacar buenas fotos si lo necesitás. Nosotros nos encargamos de publicarlos en la tienda.</p></div></li>
+      <li class="step"><div class="step-num">4</div><div class="step-body"><h3>Tu producto ya está disponible en Clickeala</h3><p>Los compradores pueden encontrarlo desde Google y desde la tienda. Cada venta te la avisamos al instante.</p></div></li>
+      <li class="step"><div class="step-num">5</div><div class="step-body"><h3>Coordinamos el envío y liquidamos tu ganancia</h3><p>Recibís el pago neto (precio de venta menos el 10% de comisión) según la modalidad acordada. Sin letra chica.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FORMULARIO DE INSCRIPCIÓN -->
+<section class="form-section" id="formulario">
+  <div class="container">
+    <div class="section-label">Solicitud de ingreso</div>
+    <h2>Completá tu solicitud</h2>
+    <p class="lead">Contanos sobre vos y lo que querés vender. El equipo de Clickeala va a revisar tu solicitud y te vamos a contactar para avanzar si es aprobada.</p>
+
+    <div class="form-aviso">
+      <strong>📋 ¿Cómo funciona el proceso?</strong>
+      Una vez que enviés este formulario, el equipo de Clickeala va a evaluar tu solicitud. Si es aprobada, nos ponemos en contacto con vos por WhatsApp o e-mail para coordinar los próximos pasos. El proceso de revisión puede demorar hasta 48 horas hábiles.
+    </div>
+
+    <div id="form-wrapper">
+      <div class="form-grid" id="inscripcion-form">
+
+        <div class="form-group">
+          <label>Nombre y apellido <span>*</span></label>
+          <input type="text" id="nombre" placeholder="Ej: María González">
+        </div>
+
+        <div class="form-group">
+          <label>WhatsApp de contacto <span>*</span></label>
+          <input type="tel" id="whatsapp" placeholder="Ej: 1167935620">
+        </div>
+
+        <div class="form-group">
+          <label>E-mail <span>*</span></label>
+          <input type="email" id="email" placeholder="tu@email.com">
+        </div>
+
+        <div class="form-group">
+          <label>Localidad / Provincia <span>*</span></label>
+          <input type="text" id="localidad" placeholder="Ej: Tigre, Buenos Aires">
+        </div>
+
+        <div class="form-group full">
+          <label>¿Qué productos querés vender? <span>*</span></label>
+          <textarea id="productos" placeholder="Describí brevemente los productos: tipo, categoría, cantidad aproximada..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>¿Tenés stock propio o trabajás bajo pedido?</label>
+          <select id="stock">
+            <option value="">Seleccioná una opción</option>
+            <option>Tengo stock propio</option>
+            <option>Trabajo bajo pedido</option>
+            <option>Ambas opciones</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>¿Cómo preferís manejar el envío?</label>
+          <select id="envio">
+            <option value="">Seleccioná una opción</option>
+            <option>Envío gratis al comprador (incluido en el precio)</option>
+            <option>El comprador paga el envío</option>
+            <option>Todavía no lo sé, necesito orientación</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>¿Tenés experiencia vendiendo online?</label>
+          <select id="experiencia">
+            <option value="">Seleccioná una opción</option>
+            <option>Sí, ya vendo por redes o marketplaces</option>
+            <option>Tengo algo de experiencia</option>
+            <option>No, es mi primera vez vendiendo online</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>¿Algo más que quieras contarnos?</label>
+          <textarea id="comentarios" placeholder="Preguntas, consultas, información adicional sobre tu emprendimiento..." style="min-height:80px;"></textarea>
+        </div>
+
+        <div class="form-group full">
+          <button class="form-submit" onclick="enviarFormulario()">📩 Enviar solicitud de ingreso</button>
+          <p style="font-size:0.78rem; color:var(--gris-texto); margin-top:10px; text-align:center;">Los campos marcados con <span style="color:#E53E3E">*</span> son obligatorios. Tu información es confidencial y solo será usada para evaluar tu solicitud.</p>
+        </div>
+
+      </div>
+
+      <!-- MENSAJE DE ÉXITO -->
+      <div class="form-success" id="form-success">
+        <div class="ok-icon">✅</div>
+        <h3>¡Solicitud enviada!</h3>
+        <p>Gracias por querer sumarte a Clickeala. Vamos a revisar tu solicitud y nos ponemos en contacto con vos en las próximas 48 horas hábiles para contarte cómo seguir.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function enviarFormulario() {
+  const nombre    = document.getElementById('nombre').value.trim();
+  const whatsapp  = document.getElementById('whatsapp').value.trim();
+  const email     = document.getElementById('email').value.trim();
+  const localidad = document.getElementById('localidad').value.trim();
+  const productos = document.getElementById('productos').value.trim();
+
+  if (!nombre || !whatsapp || !email || !localidad || !productos) {
+    alert('Por favor completá todos los campos obligatorios (*)');
+    return;
+  }
+
+  const stock       = document.getElementById('stock').value;
+  const envio       = document.getElementById('envio').value;
+  const experiencia = document.getElementById('experiencia').value;
+  const comentarios = document.getElementById('comentarios').value.trim();
+
+  const mensaje = `*NUEVA SOLICITUD DE INGRESO - CLICKEALA*
+
+*DATOS DE CONTACTO*
+Nombre: ${nombre}
+WhatsApp: ${whatsapp}
+E-mail: ${email}
+Localidad: ${localidad}
+
+*PRODUCTOS A VENDER*
+${productos}
+
+*DETALLES*
+Stock: ${stock || 'No especificado'}
+Envio: ${envio || 'No especificado'}
+Experiencia online: ${experiencia || 'No especificada'}
+
+*COMENTARIOS*
+${comentarios || 'Sin comentarios adicionales'}`;
+
+  const url = `https://wa.me/5491167935620?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+
+  document.getElementById('inscripcion-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+</script>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contacto">
+  <div class="container">
+    <h2>¿Listo para vender?</h2>
+    <p>Sumate a Clickeala hoy y empezá a generar ingresos sin complicaciones. Tu emprendimiento merece visibilidad real.</p>
+    <a href="https://wa.me/5491167935620?text=Hola%21+Quiero+vender+en+Clickeala+%F0%9F%9B%8D%EF%B8%8F" class="cta-btn" target="_blank">💬 Escribinos por WhatsApp</a>
+    <br><br>
+    <p style="font-size:0.85rem; opacity:0.7;">O escribinos a clickeala.shop@gmail.com</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Clickeala · <a href="https://clickeala.shop" target="_blank">clickeala.shop</a> · Todos los derechos reservados</p>
+  <p style="margin-top:6px;">Tigre, Buenos Aires, Argentina</p>
+</footer>
+
+</body>
+</html>
